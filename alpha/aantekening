@@ -1,0 +1,99 @@
+var dataset = [{"categorie": "2013", "values": []},
+                {"categorie": "2014","values": []},
+                {"categorie": "2015", "values": []},
+                { "categorie": "2016", "values": []},
+                { "categorie": "2017","values": []}];
+console.log(dataset)
+for (var i = 0, dat; i < data.length; i++) {
+     dat= data[i];
+      for (var j = 0; j < dataset.length; j++){
+       if (dataset[j].categorie == dat.jaar){
+         dataset[j].values.push(dat);
+    }
+ }
+};
+
+
+
+var dataset = {};
+
+for (var i = 0, dat; i < data.length; i++) {
+     dat= data[i];
+     var string = dat.jaar + dat.soort;
+     dataset[string]=dat
+  };
+
+
+histogram!
+// set the parameters for the histogram
+var histogram = d3.histogram()
+    .value(function(d) { return d.Totaal_elekt_warmte_tj; })
+
+
+// And apply twice this function to data to get the bins.
+var graph1 = histogram(dataset["fossiele_brandstoffen"],  function(d){return d.Totaal_elekt_warmte_tj} );
+var graph2 = histogram(dataset["hernieuwbare_energie"], function(d){return d.Totaal_elekt_warmte_tj} );
+var graph3 = histogram(dataset["Kernenergie"], function(d){return d.Totaal_elekt_warmte_tj} );
+var graph4 = histogram(dataset["overige"], function(d){return d.Totaal_elekt_warmte_tj} );
+
+var x = d3.scaleLinear()
+          x.domain([0, d3.max(dataset["fossiele_brandstoffen"], function(d) { return d.jaar; })])
+          .range([ 0, width]);
+svg.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x));
+
+
+// Y axis: scale and draw:
+var y = d3.scaleLinear()
+    .range([height, 0]);
+    y.domain([0, d3.max(graph1, function(d) { return d.length; })]);
+svg.append("g")
+    .call(d3.axisLeft(y));
+
+// append the bars for sery 1
+svg.selectAll("rect")
+    .data(graph1)
+    .enter()
+    .append("rect")
+      .attr("x", 1)
+      .attr("transform", function(d) { return "translate(" + x(d.jaar) + "," + y(d.length) + ")"; })
+      .attr("width", function(d) { return width - x(d.jaar); })
+      .attr("height", function(d) { return height - y(d.length); })
+      .style("fill", "#69b3a2")
+      .style("opacity", 0.6)
+
+// append the bars for sery 1
+svg.selectAll("rect2")
+    .data(graph2)
+    .enter()
+    .append("rect")
+      .attr("x", 1)
+      .attr("transform", function(d) { return "translate(" + x(d.jaar) + "," + y(d.length) + ")"; })
+      .attr("width", function(d) { return width - x(d.jaar); })
+      .attr("height", function(d) { return height - y(d.length); })
+      .style("fill", "#404080")
+      .style("opacity", 0.6)
+
+
+  svg.selectAll("rect3")
+      .data(graph3)
+      .enter()
+      .append("rect")
+        .attr("x", 1)
+        .attr("transform", function(d) { return "translate(" + x(d.jaar) + "," + y(d.length) + ")"; })
+        .attr("width", function(d) { return width - x(d.jaar) ; })
+        .attr("height", function(d) { return height - y(d.length); })
+        .style("fill", "SteelBlue")
+        .style("opacity", 0.6)
+
+  svg.selectAll("rect4")
+      .data(graph4)
+      .enter()
+      .append("rect")
+        .attr("x", 1)
+        .attr("transform", function(d) { return "translate(" + x(d.jaar) + "," + y(d.length) + ")"; })
+        .attr("width", function(d) { return width - x(d.jaar); })
+        .attr("height", function(d) { return height - y(d.length); })
+        .style("fill", "DarkOrange")
+        .style("opacity", 0.6)
