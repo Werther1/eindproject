@@ -1,0 +1,13 @@
+svg{
+background-color: white;
+}
+
+#safety_zone_map{
+  float:left;
+}
+#piechart_waste{
+  float:right;
+}
+#graph_energie{
+  float:right;
+}
