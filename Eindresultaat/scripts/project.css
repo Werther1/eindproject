@@ -1,0 +1,52 @@
+
+#zone1{
+  stroke: red;
+  stroke-width: 3px;
+  stroke-dasharray: 5;
+
+}
+#zone2{
+  stroke: orange;
+  stroke-width: 3px;
+  stroke-dasharray: 5;
+
+}
+#zone3{
+  stroke: yellow;
+  stroke-width: 3px;
+  stroke-dasharray: 5;
+
+}
+
+#title_map{
+  text-anchor: middle;
+  font-size: 24px;
+  text-decoration: underline;
+}
+
+#title_bar{
+  text-anchor: middle;
+  font-size: 16px;
+  text-decoration: underline;
+}
+#title_pie{
+  text-anchor: middle;
+  font-size: 16px;
+  text-decoration: underline;
+}
+#veiligheidszone{
+  stroke-width: 3px;
+  stroke-dasharray: 5;
+
+}
+#piechart{
+  stroke-width: 2px;
+  opacity: 0.7:
+}
+#gemeenten{
+  stroke:black;
+}
+
+#legend_pie{
+  font-size: 12px;
+}
